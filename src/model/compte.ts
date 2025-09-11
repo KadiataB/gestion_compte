@@ -19,7 +19,7 @@ export interface Compte {
   duree:number;
 }
 
-
+//fjgbiffnki 
 export interface Client {
   id:number;
   nom:string;
