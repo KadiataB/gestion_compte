@@ -19,7 +19,7 @@ export interface Compte {
   duree:number;
 }
 
-//fjgbiffnki 
+//fjgbiffnki
 export interface Client {
   id:number;
   nom:string;
@@ -29,3 +29,5 @@ export interface Client {
 
 
 export type CompteList = Compte[];
+
+//ok
