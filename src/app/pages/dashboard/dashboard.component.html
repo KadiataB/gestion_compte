@@ -1,0 +1,167 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Tableau de bord</h1>
+
+  <!-- Cartes de statistiques -->
+  <div class="row mb-4">
+      <div class="col-md-4 mb-3">
+          <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                  <div class="d-flex align-items-center">
+                      <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
+                          <i class="fas fa-wallet text-primary fa-2x"></i>
+                      </div>
+                      <div>
+                          <h6 class="text-muted mb-1">Total des comptes</h6>
+                          <h3 class="mb-0">24</h3>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 mb-3">
+          <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                  <div class="d-flex align-items-center">
+                      <div class="rounded-circle bg-success bg-opacity-10 p-3 me-3">
+                          <i class="fas fa-money-bill-wave text-success fa-2x"></i>
+                      </div>
+                      <div>
+                          <h6 class="text-muted mb-1">Solde total</h6>
+                          <h3 class="mb-0">15 750 000 FCFA</h3>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 mb-3">
+          <div class="card border-0 shadow-sm h-100">
+              <div class="card-body">
+                  <div class="d-flex align-items-center">
+                      <div class="rounded-circle bg-info bg-opacity-10 p-3 me-3">
+                          <i class="fas fa-exchange-alt text-info fa-2x"></i>
+                      </div>
+                      <div>
+                          <h6 class="text-muted mb-1">Transactions (aujourd'hui)</h6>
+                          <h3 class="mb-0">12</h3>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <!-- Transactions récentes -->
+  <div class="row">
+      <div class="col-md-8 mb-4">
+          <div class="card border-0 shadow-sm">
+              <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Transactions récentes</h5>
+                  <a href="#" class="btn btn-sm btn-link">Voir tout</a>
+              </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th>ID</th>
+                                  <th>Compte</th>
+                                  <th>Type</th>
+                                  <th>Montant</th>
+                                  <th>Date</th>
+                                  <th>Statut</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>T001</td>
+                                  <td>C00123</td>
+                                  <td>Dépôt</td>
+                                  <td class="text-success">+250 000 FCFA</td>
+                                  <td>15/06/2023</td>
+                                  <td><span class="badge bg-success">Complété</span></td>
+                              </tr>
+                              <tr>
+                                  <td>T002</td>
+                                  <td>C00456</td>
+                                  <td>Retrait</td>
+                                  <td class="text-danger">-75 000 FCFA</td>
+                                  <td>15/06/2023</td>
+                                  <td><span class="badge bg-success">Complété</span></td>
+                              </tr>
+                              <tr>
+                                  <td>T003</td>
+                                  <td>C00789</td>
+                                  <td>Dépôt</td>
+                                  <td class="text-success">+500 000 FCFA</td>
+                                  <td>14/06/2023</td>
+                                  <td><span class="badge bg-success">Complété</span></td>
+                              </tr>
+                              <tr>
+                                  <td>T004</td>
+                                  <td>C00123</td>
+                                  <td>Retrait</td>
+                                  <td class="text-danger">-100 000 FCFA</td>
+                                  <td>14/06/2023</td>
+                                  <td><span class="badge bg-success">Complété</span></td>
+                              </tr>
+                              <tr>
+                                  <td>T005</td>
+                                  <td>C00456</td>
+                                  <td>Dépôt</td>
+                                  <td class="text-success">+150 000 FCFA</td>
+                                  <td>13/06/2023</td>
+                                  <td><span class="badge bg-success">Complété</span></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Comptes récents -->
+      <div class="col-md-4 mb-4">
+          <div class="card border-0 shadow-sm">
+              <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Comptes récents</h5>
+                  <a href="accounts-list.html" class="btn btn-sm btn-link">Voir tout</a>
+              </div>
+              <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                      <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                          <div>
+                              <h6 class="mb-0">Amadou Diallo</h6>
+                              <small class="text-muted">Compte Épargne - C00123</small>
+                          </div>
+                          <span class="badge bg-primary rounded-pill">1 250 000 FCFA</span>
+                      </li>
+                      <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                          <div>
+                              <h6 class="mb-0">Fatou Ndiaye</h6>
+                              <small class="text-muted">Compte Chèque - C00456</small>
+                          </div>
+                          <span class="badge bg-primary rounded-pill">750 000 FCFA</span>
+                      </li>
+                      <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                          <div>
+                              <h6 class="mb-0">Moussa Sow</h6>
+                              <small class="text-muted">Compte Épargne - C00789</small>
+                          </div>
+                          <span class="badge bg-primary rounded-pill">2 500 000 FCFA</span>
+                      </li>
+                      <li class="list-group-item px-0 py-3 d-flex justify-content-between align-items-center">
+                          <div>
+                              <h6 class="mb-0">Aïda Mbaye</h6>
+                              <small class="text-muted">Compte Chèque - C00101</small>
+                          </div>
+                          <span class="badge bg-primary rounded-pill">350 000 FCFA</span>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+

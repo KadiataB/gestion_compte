@@ -1,0 +1,113 @@
+
+
+
+<!-- Contenu principal -->
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Liste des comptes</h1>
+        <a routerLink="/add" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>Nouveau compte
+        </a>
+    </div>
+
+    <!-- Filtres et recherche -->
+    <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="numero" placeholder="Rechercher un compte...">
+                        <button class="btn btn-outline-secondary" type="button" ((click))="filtreByNumero()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select">
+                        <option selected>Type de compte</option>
+                        <option>Compte Épargne</option>
+                        <option>Compte Chèque</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select">
+                        <option selected>Trier par</option>
+                        <option>Nom (A-Z)</option>
+                        <option>Nom (Z-A)</option>
+                        <option>Solde (croissant)</option>
+                        <option>Solde (décroissant)</option>
+                        <option>Date de création</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Liste des comptes -->
+    <div class="row g-4">
+        <!-- Compte 1 -->
+         @for (compte of comptes(); track compte.id) {
+        <div class="col-lg-6 col-xl-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <h6 class="card-title mb-1">{{compte.numero}}</h6>
+                            <p class="text-muted mb-0">{{compte.client.prenom}} {{compte.client.nom}}</p>
+                        </div>
+                        <span [ngClass]="{'bg-info':compte.type == 'Épargne', 'bg-success':compte.type == 'Chèque'}" class="badge">{{compte.type}}</span>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <small class="text-muted">Solde</small>
+                            <div class="fw-bold text-success">{{compte.solde}}</div>
+                        </div>
+                        <div class="col-6">
+                            <small class="text-muted">Créé le</small>
+                            <div class="fw-bold">{{compte.dateCreation}}</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge bg-warning">Bloqué ({{compte.duree}}j)</span>
+                        <div class="btn-group">
+                            <a [routerLink]="['/comptes/details']" routerLinkActive="router-link-active"  class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <button class="btn btn-sm btn-outline-warning">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      }
+
+    <!-- Pagination -->
+    <nav aria-label="Page navigation" class="mt-5">
+     <ul class="pagination justify-content-center">
+       <li class="page-item disabled">
+           <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Précédent</a>
+       </li>
+       <li class="page-item active"><a class="page-link" href="#">1</a></li>
+       <li class="page-item"><a class="page-link" href="#">2</a></li>
+       <li class="page-item"><a class="page-link" href="#">3</a></li>
+       <li class="page-item">
+           <a class="page-link" href="#">Suivant</a>
+       </li>
+   </ul>
+</nav>
+</div>
+<footer class="bg-light text-center text-muted py-3 mt-5">
+<div class="container">
+   <p class="mb-0">© 2023 BankManager - Système de Gestion de Comptes Bancaires</p>
+</div>
+</footer>
+
+
+

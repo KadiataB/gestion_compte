@@ -1,0 +1,89 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1>Créer un nouveau compte</h1>
+      <a routerLink="/" routerLinkActive="router-link-active"  class="btn btn-outline-primary">
+          <i class="fas fa-arrow-left me-2"></i>Retour à la liste
+      </a>
+  </div>
+
+  <div class="card border-0 shadow-sm">
+      <div class="card-body p-4">
+          <form>
+              <div class="row mb-4">
+                  <div class="col-md-6">
+                      <h4 class="mb-3">Informations personnelles</h4>
+                      <div class="mb-3">
+                          <label for="firstName" class="form-label">Prénom</label>
+                          <input type="text" class="form-control" id="firstName" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="lastName" class="form-label">Nom</label>
+                          <input type="text" class="form-control" id="lastName" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="email" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="phone" class="form-label">Téléphone</label>
+                          <input type="tel" class="form-control" id="phone" required>
+                      </div>
+                      <div class="mb-3">
+                          <label for="address" class="form-label">Adresse</label>
+                          <textarea class="form-control" id="address" rows="3"></textarea>
+                      </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <h4 class="mb-3">Informations du compte</h4>
+                      <div class="mb-3">
+                          <label for="accountType" class="form-label">Type de compte</label>
+                          <select class="form-select" id="accountType" required onchange="toggleAccountFields()">
+                              <option value="" selected disabled>Sélectionner un type de compte</option>
+                              <option value="epargne">Compte Épargne</option>
+                              <option value="cheque">Compte Chèque</option>
+                          </select>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for="initialBalance" class="form-label">Solde initial (FCFA)</label>
+                          <input type="number" class="form-control" id="initialBalance" required min="0">
+                      </div>
+
+                      <!-- Champs spécifiques au compte épargne -->
+                      <div id="epargneFields" style="display: none;">
+                          <div class="mb-3">
+                              <label for="lockPeriod" class="form-label">Durée de blocage (mois)</label>
+                              <input type="number" class="form-control" id="lockPeriod" min="1">
+                              <div class="form-text">Période pendant laquelle les retraits ne sont pas autorisés.</div>
+                          </div>
+                      </div>
+
+                      <!-- Champs spécifiques au compte chèque -->
+                      <div id="chequeFields" style="display: none;">
+                          <div class="alert alert-info">
+                              <i class="fas fa-info-circle me-2"></i>
+                              Les opérations sur ce compte seront facturées à hauteur de 0.8% du montant de la transaction.
+                          </div>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for="accountNumber" class="form-label">Numéro de compte</label>
+                          <div class="input-group">
+                              <input type="text" class="form-control" id="accountNumber" value="C00" readonly>
+                              <button class="btn btn-outline-secondary" type="button" onclick="generateAccountNumber()">
+                                  <i class="fas fa-random"></i> Générer
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="d-flex justify-content-end gap-2">
+                  <a routerLink="/" class="btn btn-outline-secondary">Annuler</a>
+                  <button type="submit" class="btn btn-primary">Créer le compte</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
