@@ -22,3 +22,5 @@ COPY --from=build /app/dist/gestion_compte /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
+
+# Pour construire l'image Docker, utilisez la commande :
