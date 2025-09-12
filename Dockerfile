@@ -27,3 +27,4 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 
 # Pour construire l'image Docker, utilisez la commande :
+# docker build -t gestion_compte .
