@@ -25,6 +25,7 @@ export interface Client {
   nom:string;
   prenom:string;
   age:number;
+  addresse:string;
 
 }
 
