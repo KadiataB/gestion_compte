@@ -12,6 +12,21 @@ pipeline {
             }
         }
 
+        stage('Debug') {
+            steps {
+                script {
+                    sh 'pwd'
+                    sh 'ls -ld .'
+                    sh 'whoami'
+                    sh 'groups'
+                    sh 'which docker'
+                    sh '/usr/bin/docker version'
+                    sh '/usr/bin/docker info'
+                    sh 'ls -l /var/run/docker.sock'
+                }
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh "docker build -t $IMAGE_NAME:${env.BUILD_NUMBER} ."
