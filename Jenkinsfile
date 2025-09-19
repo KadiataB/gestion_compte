@@ -3,12 +3,28 @@ pipeline {
 
     environment {
         IMAGE_NAME = "kadia08/gestion_compte"
+        NODE_VERSION = "20"
     }
 
     stages {
         stage('Checkout') {
             steps {
                 git 'https://github.com/KadiataB/gestion_compte.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh "curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash -"
+                sh "apt-get install -y nodejs"
+                sh "npm install -g @angular/cli"
+                sh "npm ci"
+            }
+        }
+
+        stage('Build Angular App') {
+            steps {
+                sh "ng build --configuration production"
             }
         }
 
@@ -20,8 +36,8 @@ pipeline {
                     sh 'whoami'
                     sh 'groups'
                     sh 'which docker'
-                    sh '/usr/bin/docker version'
-                    sh '/usr/bin/docker info'
+                    sh 'docker version'
+                    sh 'docker info'
                     sh 'ls -l /var/run/docker.sock'
                 }
             }
@@ -49,7 +65,7 @@ pipeline {
                 sh "docker compose down && docker compose up -d"
             }
         }
-    } 
+    }
 
     post {
         success {
@@ -60,4 +76,3 @@ pipeline {
         }
     }
 }
-
