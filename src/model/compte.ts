@@ -24,17 +24,8 @@ export interface Client {
   id:number;
   nom:string;
   prenom:string;
-  age:number;
-  addresse:string;
-  email:string;
-
-
 }
 
 
 export type CompteList = Compte[];
 
-//ok
-//okkkkkk
-//okkkk
-//okkk
