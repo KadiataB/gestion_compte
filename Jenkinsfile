@@ -1,9 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image "node:20"
+        }
+    }
 
     environment {
         IMAGE_NAME = "kadia08/gestion_compte"
-        NODE_VERSION = "20"
     }
 
     stages {
@@ -15,8 +18,6 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh "curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash -"
-                sh "apt-get install -y nodejs"
                 sh "npm install -g @angular/cli"
                 sh "npm ci"
             }
@@ -30,16 +31,8 @@ pipeline {
 
         stage('Debug') {
             steps {
-                script {
-                    sh 'pwd'
-                    sh 'ls -ld .'
-                    sh 'whoami'
-                    sh 'groups'
-                    sh 'which docker'
-                    sh 'docker version'
-                    sh 'docker info'
-                    sh 'ls -l /var/run/docker.sock'
-                }
+                sh 'which docker || echo "Docker not installed in this container"'
+                sh 'ls -l /var/run/docker.sock || echo "No docker.sock access"'
             }
         }
 
@@ -62,7 +55,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh "docker compose down && docker compose up -d"
+                sh "docker compose down || docker-compose down"
+                sh "docker compose up -d || docker-compose up -d"
             }
         }
     }
