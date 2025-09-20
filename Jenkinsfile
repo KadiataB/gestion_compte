@@ -59,11 +59,21 @@ pipeline {
             }
         }
 
+        // stage('Deploy') {
+        //     steps {
+        //         sh "docker compose down && docker compose up -d"
+        //     }
+        // }
         stage('Deploy') {
-            steps {
-                sh "docker compose down && docker compose up -d"
-            }
-        }
+    steps {
+        sh """
+          docker stop gestion_compte || true
+          docker rm gestion_compte || true
+          docker run -d --name gestion_compte -p 8080:80 $IMAGE_NAME:${env.BUILD_NUMBER}
+        """
+    }
+}
+
     }
 
     post {
