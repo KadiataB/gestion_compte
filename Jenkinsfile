@@ -20,6 +20,7 @@ pipeline {
             steps {
                 // sh "mkdir -p ~/.npm && chown -R \$(whoami) ~/.npm"
                 // sh "npm install -g @angular/cli"
+                sh "sudo chown -R \$(id -u):\$(id -g) /.npm || true"
                 sh "npm ci"
             }
         }
