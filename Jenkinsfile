@@ -18,6 +18,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
+                sh "mkdir -p ~/.npm && chown -R \$(whoami) ~/.npm"
                 sh "npm install -g @angular/cli"
                 sh "npm ci"
             }
