@@ -19,13 +19,13 @@ export interface Compte {
   duree:number;
 }
 
-//fjgbiffnki 
+//fjgbiffnki
 export interface Client {
   id:number;
   nom:string;
   prenom:string;
-
 }
 
 
 export type CompteList = Compte[];
+

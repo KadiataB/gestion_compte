@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  gestion_compte:
+    image: kadia08/gestion_compte:${BUILD_NUMBER}
+    container_name: gestion_compte
+    restart: always
+    ports:
+      - "8080:80"

@@ -24,3 +24,4 @@ jobs:
 
       - name: Push de l’image vers Docker Hub
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/gestion_compte:latest
+
