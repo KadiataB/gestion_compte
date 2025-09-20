@@ -18,15 +18,20 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh "mkdir -p ~/.npm && chown -R \$(whoami) ~/.npm"
+                // sh "mkdir -p ~/.npm && chown -R \$(whoami) ~/.npm"
                 sh "npm install -g @angular/cli"
                 sh "npm ci"
             }
         }
 
+        // stage('Build Angular App') {
+        //     steps {
+        //         sh "ng build --configuration production"
+        //     }
+        // }
         stage('Build Angular App') {
             steps {
-                sh "ng build --configuration production"
+                sh "npx ng build --configuration production"
             }
         }
 
