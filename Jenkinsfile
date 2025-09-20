@@ -69,7 +69,7 @@ pipeline {
         sh """
           docker stop gestion_compte || true
           docker rm gestion_compte || true
-          docker run -d --name gestion_compte -p 8080:80 $IMAGE_NAME:${env.BUILD_NUMBER}
+          docker run -d --name gestion_compte -p 8090:80 $IMAGE_NAME:${env.BUILD_NUMBER}
         """
     }
 }
