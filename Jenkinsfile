@@ -1,12 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image "node:20"
-        }
-    }
+    agent any
 
     environment {
         IMAGE_NAME = "kadia08/gestion_compte"
+        NODE_VERSION = "20"
     }
 
     stages {
@@ -18,29 +15,30 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // sh "mkdir -p ~/.npm && chown -R \$(whoami) ~/.npm"
-                // sh "npm install -g @angular/cli"
-                // sh "sudo chown -R \$(id -u):\$(id -g) /.npm || true"
-                sh "npm config set cache \${WORKSPACE}/.npm --global"
+                // Installe les dépendances locales
                 sh "npm ci"
             }
         }
 
-        // stage('Build Angular App') {
-        //     steps {
-        //         sh "ng build --configuration production"
-        //     }
-        // }
         stage('Build Angular App') {
             steps {
+                // Utilise npx pour lancer Angular CLI depuis node_modules
                 sh "npx ng build --configuration production"
             }
         }
 
         stage('Debug') {
             steps {
-                sh 'which docker || echo "Docker not installed in this container"'
-                sh 'ls -l /var/run/docker.sock || echo "No docker.sock access"'
+                script {
+                    sh 'pwd'
+                    sh 'ls -ld .'
+                    sh 'whoami'
+                    sh 'groups'
+                    sh 'which docker'
+                    sh 'docker version'
+                    sh 'docker info'
+                    sh 'ls -l /var/run/docker.sock'
+                }
             }
         }
 
@@ -63,8 +61,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh "docker compose down || docker-compose down"
-                sh "docker compose up -d || docker-compose up -d"
+                sh "docker compose down && docker compose up -d"
             }
         }
     }
